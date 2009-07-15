@@ -48,3 +48,11 @@ Caveat emptor
 ---------------
 
 To get the commit data for the graph the template tag makes an HTTP request to github.com — so for every sparkline there will be two HTTP requests: one client-side to a Google server to get the chart image and one server-side to Github.  Although it's optional I highly recommend using Django's built-in caching to cache either the template or the template fragment.
+
+
+Licence
+---------
+
+All code in this repository is released under the GNU General Public licence version 2.  For details see the LICENCE file in the root directory.
+
+If you'd like to use the code under a different (open-source) licence, contact me and we'll see what we can do.
