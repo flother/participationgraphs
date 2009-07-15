@@ -4,7 +4,10 @@ web site, this is for you.
 This is a small Django app that provides a template tag to allow you to include
 sparklines of the 52-week commit history for a project on Github.  Think of the
 graphs you see down the left-hand side of a Github user's home page — only, as I
-said, snazzy sparklines instead of bar charts.
+said, snazzy sparklines instead of bar charts.  Examples can be found on the
+introductory blog post:
+
+  http://www.flother.com/blog/2009/django-github-sparklines/
 
 
 Requirements
