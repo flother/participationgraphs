@@ -61,7 +61,14 @@ def get_github_participation_data(username, project_name):
     """
     data_url = 'http://github.com/cache/participation_graph/%s/%s' % (
         username, project_name)
-    response = urllib2.urlopen(data_url)
+    try:
+        response = urllib2.urlopen(data_url)
+    except urllib2.HTTPError:
+        # If retrieving the data from Github fails it's likely to be
+        # because of a mis-spelled username or project name.  Re-raise
+        # a ValueError here so it can be caught by the template tag.
+        raise ValueError, "no data for user '%s' and project '%s'" % (username,
+            project_name)
     data = response.read()
     commits = data.splitlines()
     return {'project_commits': commits[0], 'user_commits': commits[1]}
