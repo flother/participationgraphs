@@ -47,7 +47,7 @@ def get_google_chart_url(username, project_name, width, height,
         'chds': '%s,%s' % (0, max_value),  # Minimum and maximum data values.
         'chd': 't:%s' % ','.join([str(i) for i in data])  # Actual chart data.
     }
-    return base_url % '&'.join(['%s=%s' % (k, v)
+    return base_url % '&amp;'.join(['%s=%s' % (k, v)
         for k, v in chart_options.items()])
 
 
