@@ -63,7 +63,7 @@ def get_github_participation_data(username, project_name):
         username, project_name)
     try:
         response = urllib2.urlopen(data_url)
-    except urllib2.HTTPError:
+    except (urllib2.HTTPError, urllib2.URLError):
         # If retrieving the data from Github fails it's likely to be
         # because of a mis-spelled username or project name.  Re-raise
         # a ValueError here so it can be caught by the template tag.
