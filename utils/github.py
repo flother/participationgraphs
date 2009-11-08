@@ -47,7 +47,7 @@ def get_google_chart_url(username, project_name, width, height,
         'chco': foreground_colour,  # Line (data) colour.
         'chf': 'bg,s,%s' % background_colour,  # Graph background colour.
         'chm': 'B,%s,0,0,0|o,%s,0,51,4' % (fill_colour, marker_colour),  # Data fill and end marker.
-        'chxp': '0,%0.1f' % (100 / len(data)) * data[-1],  # End marker position.
+        'chxp': '0,%0.1f' % ((100 / len(data)) * data[-1]),  # End marker position.
         'chxl': '0:|%s' % data[-1],  # Use the last data point as a marker.
         'chxt': 'r',  # Put the marker on the right-hand y-axis.
         'cht': 'ls',  # Chart type (here it's a sparkline).
