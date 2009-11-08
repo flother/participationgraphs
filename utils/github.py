@@ -5,7 +5,7 @@ from django.utils.translation import ugettext as _
 
 
 def get_github_participation_chart_img(username, project_name, width, height,
-        foreground_colour, background_colour):
+        foreground_colour, background_colour, fill_colour, marker_colour):
     """
     Return an <img /> element referencing a Google Charts sparkline
     displaying the number of commits in the last 52 weeks for a given
@@ -18,9 +18,11 @@ def get_github_participation_chart_img(username, project_name, width, height,
         ``height``: height of the image in pixels
         ``foreground_colour``: 6-digit hex colour of the sparkline data
         ``background_colour``: 6-digit hex colour of the graph background
+        ``fill_colour``: 6-digit hex colour of the graph's data fill
+        ``marker_colour``: 6-digit hex colour for the final data marker
     """
     src = get_google_chart_url(username, project_name, width,
-        height, foreground_colour, background_colour)
+        height, foreground_colour, background_colour, fill_colour, marker_colour)
     attributes = {
         'src': src,
         'alt': escape(_("52-week participation on the Github project '%s'" % project_name)),
@@ -31,7 +33,8 @@ def get_github_participation_chart_img(username, project_name, width, height,
 
 
 def get_google_chart_url(username, project_name, width, height,
-        foreground_colour, background_colour):
+        foreground_colour, background_colour, fill_colour='ffffff',
+        marker_colour='333333'):
     """
     Generate a URL for a sparkline using the Google Charts API.
     """
@@ -42,7 +45,11 @@ def get_google_chart_url(username, project_name, width, height,
     chart_options = {
         'chs': '%sx%s' % (width, height),  # Dimensions (width by height).
         'chco': foreground_colour,  # Line (data) colour.
-        'chf': 'bg,s,%s' % background_colour,  # Grapah background colour.
+        'chf': 'bg,s,%s' % background_colour,  # Graph background colour.
+        'chm': 'B,%s,0,0,0|o,%s,0,51,4' % (fill_colour, marker_colour),  # Data fill and end marker.
+        'chxp': '0,%0.1f' % (100 / len(data)) * data[-1],  # End marker position.
+        'chxl': '0:|%s' % data[-1],  # Use the last data point as a marker.
+        'chxt': 'r',  # Put the marker on the right-hand y-axis.
         'cht': 'ls',  # Chart type (here it's a sparkline).
         'chds': '%s,%s' % (0, max_value),  # Minimum and maximum data values.
         'chd': 't:%s' % ','.join([str(i) for i in data])  # Actual chart data.
