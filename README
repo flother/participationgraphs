@@ -9,6 +9,10 @@ introductory blog post:
 
   http://www.flother.com/blog/2009/django-github-sparklines/
 
+A real-world example can be found on my web site's "About" page:
+
+  http://www.flother.com/about/
+
 
 Requirements
 --------------
@@ -62,6 +66,15 @@ wide by 40 pixels high, with a red data-line on a black background:
 
   {% github_participation_graph "brosner" "django" "100x40" "ff0000" "000000" %}
 
+There are seven parameters in total; two are mandatory and five are optional:
+
+  * username: Github username (mandatory)
+  * project_name: Github project name (mandatory)
+  * dimensions: height and width of the image in pixels in the format "HxW"
+  * foreground_colour: 6-digit hex colour of the sparkline data
+  * background_colour: 6-digit hex colour of the graph background
+  * fill_colour: 6-digit hex colour of the graph's data fill
+  * marker_colour: 6-digit hex colour for the final data marker
 
 Caveat emptor
 ---------------
