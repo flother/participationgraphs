@@ -59,7 +59,7 @@ def get_github_participation_data(username, project_name):
 
     http://github.com/guides/making-sense-of-the-participation-graph-data
     """
-    data_url = 'http://github.com/cache/participation_graph/%s/%s' % (
+    data_url = 'http://github.com/%s/%s/cache/participation_graph' % (
         username, project_name)
     try:
         response = urllib2.urlopen(data_url)
