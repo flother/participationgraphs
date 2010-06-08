@@ -27,6 +27,9 @@ Installation
 --------------
 
 Download the code and add the participationgraphs directory to your Python path.
+Alternatively you can install the participationgraphs package with pip:
+
+  pip install -U -e git+git://github.com/flother/participationgraphs.git#egg=participationgraphs
 
 Add the participationgraphs app to INSTALLED_APPS in your Django settings file:
 
