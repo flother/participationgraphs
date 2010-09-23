@@ -61,12 +61,9 @@ def get_google_chart_url(username, project_name, width, height,
 def get_github_participation_data(username, project_name):
     """
     Get the participation data (i.e. number of commits per week) for a
-    given project for a given user on Github.  More information on the
-    format of the data is available on Github:
-
-    http://github.com/guides/making-sense-of-the-participation-graph-data
+    given project for a given user on Github.
     """
-    data_url = 'http://github.com/%s/%s/cache/participation_graph' % (
+    data_url = 'http://github.com/cache/participation_graph/%s/%s' % (
         username, project_name)
     try:
         response = urllib2.urlopen(data_url)
