@@ -6,7 +6,7 @@ setup(
     version=__import__("participationgraphs").__version__,
     author="Matt Riggott",
     description="Django app with a template tag to allow you to include sparklines of the 52-week commit history for a project on Github",
-    long_description=open("README").read(),
+    long_description=open("README.rst").read(),
     license="GPL",
     url="http://github.com/flother/participationgraphs",
     packages=find_packages(),
